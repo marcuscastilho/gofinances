@@ -2,7 +2,6 @@ import React from "react";
 import { ThemeProvider } from "styled-components";
 import {
   useFonts,
-  Poppins_100Thin,
   Poppins_400Regular,
   Poppins_500Medium,
   Poppins_700Bold,
@@ -14,14 +13,17 @@ import { Splash } from "./src/screens/Splash";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    Poppins_100Thin,
     Poppins_400Regular,
     Poppins_500Medium,
     Poppins_700Bold,
   });
 
   if (!fontsLoaded) {
-    return <Splash />;
+    return (
+      <ThemeProvider theme={BaseTheme}>
+        <Splash />
+      </ThemeProvider>
+    );
   }
 
   return (
